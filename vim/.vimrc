@@ -132,6 +132,7 @@ nnoremap <leader><Tab> :bnext<CR>
 nnoremap <leader><Tab><Tab> :bprevious<CR>
 nnoremap <leader><Tab><Tab><Tab> :bd<CR>
 nnoremap <leader><leader>s <C-w><C-w>
+nnoremap <leader><leader>t :vertical terminal<CR>
 
 """"""""""""""""""""""""coc nvim settings start""""""""""""""""""""""""
 
