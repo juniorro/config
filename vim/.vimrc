@@ -131,7 +131,9 @@ vnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
 nnoremap <leader><Tab> :bnext<CR>
 nnoremap <leader><Tab><Tab> :bprevious<CR>
 nnoremap <leader><Tab><Tab><Tab> :bd<CR>
-nnoremap <leader><leader>s <C-w><C-w>
+nnoremap <leader><leader>a <C-w>h
+nnoremap <leader><leader>s <C-w>l
+nnoremap <leader><leader>w <C-w><C-w>
 nnoremap <leader><leader>t :vertical terminal<CR>
 
 """"""""""""""""""""""""coc nvim settings start""""""""""""""""""""""""
