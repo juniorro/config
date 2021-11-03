@@ -111,8 +111,8 @@ let mapleader = " "
 nmap <leader>hk :vsplit ~/.vim/hotkeys<cr>
 nmap <leader>vs :vsplit<cr>
 nmap <leader>q :q <cr>
-nmap <leader><leader>= :vertical resize +5 <cr>
-nmap <leader><leader>- :vertical resize -5 <cr>
+nmap <leader><leader>= :vertical resize +2 <cr>
+nmap <leader><leader>- :vertical resize -2 <cr>
 nmap <leader>w :w <cr>
 nmap <leader>r :wq <cr>
 nmap <leader>gd <Plug>(coc-definition)
@@ -131,8 +131,11 @@ vnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
 nnoremap <leader><Tab> :bnext<CR>
 nnoremap <leader><Tab><Tab> :bprevious<CR>
 nnoremap <leader><Tab><Tab><Tab> :bd<CR>
-nnoremap <leader><leader>s <C-w><C-w>
+nnoremap <leader><leader>a <C-w>h
+nnoremap <leader><leader>s <C-w>l
+nnoremap <leader><leader>w <C-w><C-w>
 nnoremap <leader><leader>t :vertical terminal<CR>
+nnoremap <leader><leader>bs :sh<CR>
 
 """"""""""""""""""""""""coc nvim settings start""""""""""""""""""""""""
 
