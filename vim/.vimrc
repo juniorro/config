@@ -13,6 +13,20 @@ let NERDTreeMinimalUI=1
 "let g:airline_powerline_fonts=1
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#enabled = 1
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+"To enable smart (trying to guess import option) inserting class imports with F4, add:
+nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+"To enable usual (will ask for import option) inserting class imports with F5, add:
+nmap <F5> <Plug>(JavaComplete-Imports-Add)
+imap <F5> <Plug>(JavaComplete-Imports-Add)
+"To add all missing imports with F6:
+nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"To remove all unused imports with F7:
+nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 
 " Options viewable by using :options
 " Set options viewable by using :set all
@@ -55,6 +69,7 @@ Plug 'vim-scripts/SQLUtilities'
 Plug 'valloric/youcompleteme'
 
 Plug 'dracula/dracula-theme'
+Plug 'artur-shaik/vim-javacomplete2'
 
 " One Dark theme
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
@@ -117,7 +132,9 @@ nmap <leader>w :w <cr>
 nmap <leader>r :wq <cr>
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
-nmap <leader>t :NERDTree<cr>
+"nmap <leader>t :NERDTree<cr>
+"nmap <leader>g :NERDTreeToggle<cr>
+nmap <leader>t :NERDTreeToggle<cr>
 nmap <leader><leader>p :Prettier<cr>
 nmap <leader><leader>g :GoFmt<cr>
 nmap <leader><leader>b :Black<cr>
@@ -127,7 +144,7 @@ nmap <leader><leader>f :Files<cr>
 nmap <leader><leader><leader>g :GoMetaLinter<cr>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
-vnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
+noremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
 nnoremap <leader><Tab> :bnext<CR>
 nnoremap <leader><Tab><Tab> :bprevious<CR>
 nnoremap <leader><Tab><Tab><Tab> :bd<CR>
@@ -151,7 +168,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
