@@ -1,6 +1,7 @@
 " Map escape to jj
 imap jj <Esc>
 map bf :buffers<cr>
+autocmd BufWritePre *.yml :%s/\s\+$//e
 
 " Syntax highlighting
 syntax on
@@ -59,14 +60,12 @@ set incsearch
 " Plugins
 call plug#begin('~/.vim/plugged')
 "status bar at the bottom of vim
-Plug 'bling/vim-airline'
-
-" Cobalt theme
-Plug 'herrbischoff/cobalt2.vim'
-"for mysql
-Plug 'vim-scripts/SQLUtilities'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+"Plug 'bryanmylee/vim-colorscheme-icons'
 "code completion
 Plug 'valloric/youcompleteme'
+
 
 Plug 'dracula/dracula-theme'
 Plug 'artur-shaik/vim-javacomplete2'
@@ -89,6 +88,8 @@ Plug 'preservim/nerdcommenter'
 " A light and configurable statusline/tabline plugin for Vim
 Plug 'itchyny/lightline.vim'
 
+" Show git branch in status line
+Plug 'itchyny/vim-gitbranch'
 " Directory tree
 Plug 'scrooloose/nerdtree'
 
@@ -138,11 +139,12 @@ nmap <leader>t :NERDTreeToggle<cr>
 nmap <leader><leader>p :Prettier<cr>
 nmap <leader><leader>g :GoFmt<cr>
 nmap <leader><leader>b :Black<cr>
-nmap <leader><leader>u :UndotreeToggle<cr>
+"nmap <leader><leader>u :UndotreeToggle<cr>
 " Files (runs $FZF_DEFAULT_COMMAND if defined)
 nmap <leader><leader>f :Files<cr>
 nmap <leader><leader><leader>g :GoMetaLinter<cr>
 nnoremap <C-p> :GFiles<CR>
+nnoremap <leader><leader>e <C-w>o<CR>
 nnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
 noremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
 nnoremap <leader><Tab> :bnext<CR>
@@ -153,6 +155,7 @@ nnoremap <leader><leader>s <C-w>l
 nnoremap <leader><leader>w <C-w><C-w>
 nnoremap <leader><leader>t :vertical terminal<CR>
 nnoremap <leader><leader>bs :sh<CR>
+nnoremap <leader><leader>b :vertical ba<CR>
 
 """"""""""""""""""""""""coc nvim settings start""""""""""""""""""""""""
 
@@ -176,6 +179,17 @@ set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
+
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
+
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
