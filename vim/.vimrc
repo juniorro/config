@@ -2,13 +2,12 @@
 imap jj <Esc>
 map bf :buffers<cr>
 autocmd BufWritePre *.yml :%s/\s\+$//e
-
 " Syntax highlighting
 syntax on
 packadd! dracula
 
 " Set FZF Default to Ripgrep (must install ripgrep)
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --no-ignore-vcs'
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules, .git}"'
 let g:NERDTreeWinSize=20
 let NERDTreeMinimalUI=1
 "let g:airline_powerline_fonts=1
@@ -16,24 +15,12 @@ let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#enabled = 1
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
-"To enable smart (trying to guess import option) inserting class imports with F4, add:
-nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-"To enable usual (will ask for import option) inserting class imports with F5, add:
-nmap <F5> <Plug>(JavaComplete-Imports-Add)
-imap <F5> <Plug>(JavaComplete-Imports-Add)
-"To add all missing imports with F6:
-nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-"To remove all unused imports with F7:
-nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-
 " Options viewable by using :options
 " Set options viewable by using :set all
 " Or help for individual configs can be accessed :help <name>
 set nocompatible
 set redrawtime=10000
+set splitright
 set browsedir=buffer
 set background=dark
 set laststatus=2
@@ -59,66 +46,24 @@ set incsearch
 
 " Plugins
 call plug#begin('~/.vim/plugged')
-"status bar at the bottom of vim
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-"Plug 'bryanmylee/vim-colorscheme-icons'
-"code completion
-Plug 'valloric/youcompleteme'
-
-
 Plug 'dracula/dracula-theme'
-Plug 'artur-shaik/vim-javacomplete2'
-
-" One Dark theme
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-
-" One Dark theme
 Plug 'joshdick/onedark.vim'
-
-" Make your Vim/Neovim as smart as VSCode
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Formatter
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
-" Comment and uncomment lines
 Plug 'preservim/nerdcommenter'
-
-" A light and configurable statusline/tabline plugin for Vim
 Plug 'itchyny/lightline.vim'
-
-" Show git branch in status line
 Plug 'itchyny/vim-gitbranch'
-" Directory tree
 Plug 'scrooloose/nerdtree'
-
-" Visualize undo history tree (in vim undo is not linear)
 Plug 'mbbill/undotree'
-
-" Syntax highlighting for languages
 Plug 'sheerun/vim-polyglot'
-
-" Fzf is a general-purpose command-line fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-" This plugin adds Go language support for Vim, with many features
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-" Python code formatter
-Plug 'ambv/black'
-
-" Gruvbox color theme
 Plug 'morhetz/gruvbox'
-
-" Vim-monokai-tasty color theme
+Plug 'tomasr/molokai'
 Plug 'patstockwell/vim-monokai-tasty'
-
 Plug 'ryanoasis/vim-devicons'
-
 Plug 'airblade/vim-gitgutter'
-
 call plug#end()
 
 " Set mapleader to space
@@ -129,6 +74,8 @@ nmap <leader>vs :vsplit<cr>
 nmap <leader>q :q <cr>
 nmap <leader><leader>= :vertical resize +2 <cr>
 nmap <leader><leader>- :vertical resize -2 <cr>
+nmap <leader><leader><leader>= :resize +2 <cr>
+nmap <leader><leader><leader>- :resize -2 <cr>
 nmap <leader>w :w <cr>
 nmap <leader>r :wq <cr>
 nmap <leader>gd <Plug>(coc-definition)
@@ -138,7 +85,7 @@ nmap <leader>gr <Plug>(coc-references)
 nmap <leader>t :NERDTreeToggle<cr>
 nmap <leader><leader>p :Prettier<cr>
 nmap <leader><leader>g :GoFmt<cr>
-nmap <leader><leader>b :Black<cr>
+"nmap <leader><leader>b :Black<cr>
 "nmap <leader><leader>u :UndotreeToggle<cr>
 " Files (runs $FZF_DEFAULT_COMMAND if defined)
 nmap <leader><leader>f :Files<cr>
@@ -152,10 +99,12 @@ nnoremap <leader><Tab><Tab> :bprevious<CR>
 nnoremap <leader><Tab><Tab><Tab> :bd<CR>
 nnoremap <leader><leader>a <C-w>h
 nnoremap <leader><leader>s <C-w>l
-nnoremap <leader><leader>w <C-w><C-w>
+nnoremap <leader><leader>w <C-w>k
+nnoremap <leader><leader>z <C-w>j
+nnoremap <leader><leader>x <C-w><C-w>
 nnoremap <leader><leader>t :vertical terminal<CR>
 nnoremap <leader><leader>bs :sh<CR>
-nnoremap <leader><leader>b :vertical ba<CR>
+nmap <leader><leader>b :vertical ba<CR>
 
 """"""""""""""""""""""""coc nvim settings start""""""""""""""""""""""""
 
@@ -343,7 +292,6 @@ let g:prettier#exec_cmd_path = "~/.vim/plugged/vim-prettier/node_modules/prettie
 " Max line length that prettier will wrap on: a number or 'auto'
 let g:prettier#config#print_width = 100 " default is 'auto'
 
-" Colorscheme (For gruvbox $TERM env var needs to be xterm-256color)
-"autocmd vimenter * ++nested colorscheme gruvbox
 "colorscheme vim-monokai-tasty
 colorscheme dracula
+"colorscheme molokai
