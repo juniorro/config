@@ -10,6 +10,7 @@ packadd! dracula
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules, .git}"'
 let g:NERDTreeWinSize=20
 let NERDTreeMinimalUI=1
+"let NERDTreeMapOpenInTab='<ENTER>'
 "let g:airline_powerline_fonts=1
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#enabled = 1
