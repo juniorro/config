@@ -54,23 +54,26 @@ call plug#end()
 " Mappings
 let mapleader = " "
 imap jj <Esc>
-map bf :buffers<cr>
-map <leader><leader>u :%s/\s\+$//e <cr>
-nmap <leader>hk :vsplit ~/.vim/hotkeys<cr>
-nmap <leader>vs :vsplit<cr>
-nmap <leader>q :q <cr>
-nmap <leader><leader>= :vertical resize +2 <cr>
-nmap <leader><leader>- :vertical resize -2 <cr>
-nmap <leader><leader><leader>= :resize +2 <cr>
-nmap <leader><leader><leader>- :resize -2 <cr>
-nmap <leader>w :w <cr>
-nmap <leader>r :wq <cr>
+nmap <F3> :set rnu! <CR>
+imap <F3> <ESC> :set rnu! <CR>i
+map bf :buffers<CR>
+map bf :buffers<CR>
+map <leader><leader>u :%s/\s\+$//e <CR>
+nmap <leader>hk :vsplit ~/.vim/hotkeys<CR>
+nmap <leader>vs :vsplit<CR>
+nmap <leader>q :q <CR>
+nmap <leader><leader>= :vertical resize +2 <CR>
+nmap <leader><leader>- :vertical resize -2 <CR>
+nmap <leader><leader><leader>= :resize +2 <CR>
+nmap <leader><leader><leader>- :resize -2 <CR>
+nmap <leader>w :w <CR>
+nmap <leader>r :wq <CR>
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
-nmap <leader>t :NERDTreeToggle<cr>
-nmap <leader><leader>p :Prettier<cr>
-nmap <leader><leader>g :GoFmt<cr>
-nmap <leader><leader>f :Files<cr>
+nmap <leader>t :NERDTreeToggle<CR>
+nmap <leader><leader>p :Prettier<CR>
+nmap <leader><leader>g :GoFmt<CR>
+nmap <leader><leader>f :Files<CR>
 nnoremap <leader><leader>e <C-w>o<CR>
 nnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
 noremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
@@ -145,8 +148,8 @@ else
 endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+" format on enter, <CR> could be remapped by other vim plugin
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
@@ -209,8 +212,8 @@ omap ac <Plug>(coc-classobj-a)
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<CR>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<CR>" : "\<Left>"
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
@@ -236,15 +239,15 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<CR>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<CR>
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<CR>
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<CR>
 " Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<CR>
 " Do default action for next item.
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
