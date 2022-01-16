@@ -14,7 +14,7 @@ set smartindent
 set number
 set nowrap
 set nobackup
-set undofile
+set noundofile
 set incsearch
 set completeopt-=preview
 set number
