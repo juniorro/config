@@ -35,7 +35,7 @@ set updatetime=300
 set shortmess+=c
 set laststatus=2
 set digraph
-set textwidth=50
+" set textwidth=5000
 
 " Plugins
 call plug#begin()
