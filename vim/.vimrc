@@ -69,6 +69,8 @@ nmap <silent><leader><leader>= :vertical resize +2 <CR>
 nmap <silent><leader><leader>- :vertical resize -2 <CR>
 nmap <silent><leader><leader><leader>= :resize +2 <CR>
 nmap <silent><leader><leader><leader>- :resize -2 <CR>
+map <C-L> 5zl
+map <C-H> 2zh
 nmap <silent><leader>w :w <CR>
 nmap <silent><leader>r :wq <CR>
 nmap <silent><leader>gd <Plug>(coc-definition)
@@ -80,17 +82,17 @@ nmap <silent><leader><leader>f :Files<CR>
 nnoremap <leader><leader>e <C-w>o<CR>
 nnoremap <silent> <leader><leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
 noremap <silent> <leader><leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
-nnoremap <leader><Tab> :bnext<CR>
-nnoremap <leader><Tab><Tab> :bprevious<CR>
-nnoremap <leader><Tab><Tab><Tab> :bd<CR>
+nnoremap <silent><leader><Tab> :bnext<CR>
+nnoremap <silent><leader><Tab><Tab> :bprevious<CR>
+nnoremap <silent><leader><Tab><Tab><Tab> :bd<CR>
 nnoremap <leader><leader>a <C-w>h
 nnoremap <leader><leader>s <C-w>l
 nnoremap <leader><leader>w <C-w>k
 nnoremap <leader><leader>z <C-w>j
 nnoremap <leader><leader>x <C-w><C-w>
-nnoremap <leader><leader>t :vertical terminal<CR>
-nnoremap <leader><leader>bs :sh<CR>
-map <leader><leader>r <C-End>
+nnoremap <silent><leader><leader>t :vertical terminal<CR>
+nnoremap <silent><leader><leader>bs :sh<CR>
+map <silent><leader><leader>r <C-End>
 nmap <leader><leader>b :vertical ba<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
