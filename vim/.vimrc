@@ -1,20 +1,22 @@
 " Settings
 syntax on
 set nocompatible
+set spell
+set spelllang=en_us
 set redrawtime=10000
 set hlsearch
 set incsearch
 set splitright
-set scrolloff=5
+set scrolloff=3
 set browsedir=buffer
 set background=dark
 set laststatus=2
 set noerrorbells
-set tabstop=2 softtabstop=2
+set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
-set number
 set nowrap
 set nobackup
 set noundofile
@@ -63,7 +65,7 @@ map bf :buffers<CR>
 map bf :buffers<CR>
 map <silent><leader><leader>u :%s/\s\+$//e <CR>
 nmap <silent><leader>hk :vsplit ~/.vim/hotkeys<CR>
-nmap <silent><leader>vs :vsplit<CR>
+nmap <silent><leader>vs :vnew<CR>
 nmap <silent><leader>q :q <CR>
 nmap <silent><leader><leader>= :vertical resize +2 <CR>
 nmap <silent><leader><leader>- :vertical resize -2 <CR>
@@ -73,6 +75,8 @@ map <C-L> 5zl
 map <C-H> 2zh
 nmap <silent><leader>w :w <CR>
 nmap <silent><leader>r :wq <CR>
+map <silent><leader><leader>m :call RenameFile()<CR>
+map <silent><leader><leader>v :call VsplitWithFile()<CR>
 nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <silent><leader>gr <Plug>(coc-references)
 nmap <silent><leader>t :NERDTreeToggle<CR>
@@ -301,4 +305,22 @@ function! s:show_documentation()
   else
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
+endfunction
+
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+
+function! VsplitWithFile()
+    let filename = input('File name: ', expand('%'), 'file')
+    if filename != ''
+        exec ':vsplit ' filename
+        redraw!
+    endif
 endfunction
