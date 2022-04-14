@@ -96,8 +96,8 @@ nnoremap <leader><leader>s <C-w>l
 nnoremap <leader><leader>w <C-w>k
 nnoremap <leader><leader>z <C-w>j
 nnoremap <leader><leader>x <C-w><C-w>
-nnoremap <leader><leader>o o<ESC>
-nnoremap <leader><leader>O O<ESC>
+nnoremap <leader>o o<ESC>
+nnoremap <leader><leader>o O<ESC>
 nnoremap <silent><leader><leader>t :vertical terminal<CR>
 nnoremap <silent><leader><leader>bs :sh<CR>
 map <silent><leader><leader>r <C-End>
