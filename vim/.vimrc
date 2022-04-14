@@ -1,8 +1,8 @@
 " Settings
 syntax on
 set nocompatible
-set spell
-set spelllang=en_us
+" set spell
+" set spelllang=en_us
 set redrawtime=10000
 set hlsearch
 set incsearch
@@ -77,6 +77,8 @@ nmap <silent><leader>w :w <CR>
 nmap <silent><leader>r :wq <CR>
 map <silent><leader><leader>m :call RenameFile()<CR>
 map <silent><leader><leader>v :call VsplitWithFile()<CR>
+map <silent><leader>b :call TabNewWithFile()<CR>
+map <silent><leader><leader>bd :bd<CR>
 nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <silent><leader>gr <Plug>(coc-references)
 nmap <silent><leader>t :NERDTreeToggle<CR>
@@ -94,6 +96,8 @@ nnoremap <leader><leader>s <C-w>l
 nnoremap <leader><leader>w <C-w>k
 nnoremap <leader><leader>z <C-w>j
 nnoremap <leader><leader>x <C-w><C-w>
+nnoremap <leader><leader>o o<ESC>
+nnoremap <leader><leader>O O<ESC>
 nnoremap <silent><leader><leader>t :vertical terminal<CR>
 nnoremap <silent><leader><leader>bs :sh<CR>
 map <silent><leader><leader>r <C-End>
@@ -287,7 +291,7 @@ nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<CR>
 " Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<CR>
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<CR>
+" nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<CR>
 " Search workspace symbols.
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<CR>
 " Do default action for next item.
@@ -321,6 +325,14 @@ function! VsplitWithFile()
     let filename = input('File name: ', expand('%'), 'file')
     if filename != ''
         exec ':vsplit ' filename
+        redraw!
+    endif
+endfunction
+
+function! TabNewWithFile()
+    let filename = input('File name: ', expand('%'), 'file')
+    if filename != ''
+        exec ':tabedit ' filename
         redraw!
     endif
 endfunction
