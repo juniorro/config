@@ -3,6 +3,9 @@ syntax on
 set nocompatible
 " set spell
 " set spelllang=en_us
+" set wrap
+" set linebreak
+" set nolist
 set redrawtime=10000
 set hlsearch
 set incsearch
@@ -36,7 +39,7 @@ set cmdheight=1
 set updatetime=300
 set shortmess+=c
 set laststatus=2
-set digraph
+" set digraph
 " set textwidth=5000
 
 " Plugins
@@ -71,6 +74,8 @@ nmap <silent><leader><leader>= :vertical resize +2 <CR>
 nmap <silent><leader><leader>- :vertical resize -2 <CR>
 nmap <silent><leader><leader><leader>= :resize +2 <CR>
 nmap <silent><leader><leader><leader>- :resize -2 <CR>
+nmap <silent><leader><leader>d :r! date <CR>
+nmap <silent><leader><leader>x :bd<CR>
 map <C-L> 5zl
 map <C-H> 2zh
 nmap <silent><leader>w :w <CR>
@@ -78,7 +83,6 @@ nmap <silent><leader>r :wq <CR>
 map <silent><leader><leader>m :call RenameFile()<CR>
 map <silent><leader><leader>v :call VsplitWithFile()<CR>
 map <silent><leader>b :call TabNewWithFile()<CR>
-map <silent><leader><leader>bd :bd<CR>
 nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <silent><leader>gr <Plug>(coc-references)
 nmap <silent><leader>t :NERDTreeToggle<CR>
