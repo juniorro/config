@@ -1,6 +1,7 @@
 " Settings
 syntax on
 set nocompatible
+set clipboard=unnamed
 " set spell
 " set spelllang=en_us
 " set wrap
@@ -55,6 +56,7 @@ Plug 'neoclide/coc.nvim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'kshenoy/vim-signature'
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
@@ -82,12 +84,12 @@ nmap <silent><leader>w :w <CR>
 nmap <silent><leader>r :wq <CR>
 map <silent><leader><leader>m :call RenameFile()<CR>
 map <silent><leader><leader>v :call VsplitWithFile()<CR>
+map <silent><leader><leader>h :call SplitWithFile()<CR>
 map <silent><leader>b :call TabNewWithFile()<CR>
 nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <silent><leader>gr <Plug>(coc-references)
+
 nmap <silent><leader>t :NERDTreeToggle<CR>
-nmap <silent><leader><leader>p :Prettier<CR>
-nmap <silent><leader><leader>g :GoFmt<CR>
 nmap <silent><leader><leader>f :Files<CR>
 nnoremap <leader><leader>e <C-w>o<CR>
 nnoremap <silent> <leader><leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
@@ -106,15 +108,16 @@ nnoremap <silent><leader><leader>t :vertical terminal<CR>
 nnoremap <silent><leader><leader>bs :sh<CR>
 map <silent><leader><leader>r <C-End>
 nmap <leader><leader>b :vertical ba<CR>
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent>gd <Plug>(coc-definition)
+nmap <silent>gy <Plug>(coc-type-definition)
+nmap <silent>gi <Plug>(coc-implementation)
+nmap <silent>gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Other Configs
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --ignore-vcs -g "!.git/"'
 let g:NERDTreeWinSize=20
+let g:SignatureForceRemoveGlobal2=0
 let NERDTreeMinimalUI=1
 let g:airline#extensions#hunks#enabled=1
 let g:airline#extensions#enabled = 1
@@ -329,6 +332,14 @@ function! VsplitWithFile()
     let filename = input('File name: ', expand('%'), 'file')
     if filename != ''
         exec ':vsplit ' filename
+        redraw!
+    endif
+endfunction
+
+function! SplitWithFile()
+    let filename = input('File name: ', expand('%'), 'file')
+    if filename != ''
+        exec ':split ' filename
         redraw!
     endif
 endfunction
