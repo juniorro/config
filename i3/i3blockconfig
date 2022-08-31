@@ -1,0 +1,70 @@
+[WEATHER_SIGNALER]
+command=~/.config/i3blocks/weather/weather_signaler
+# command=~/.config/i3blocks/weather/test.sh
+interval=once
+
+#[WEATHER]
+#command=~/.config/i3blocks/weather/weather_info.sh
+#interval=300
+#color=#FEC925
+#signal=2
+
+
+[WEATHER]
+label=🌦️
+command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+# command=~/.config/i3blocks/weather/test.sh
+interval=1800
+color=#FEC925
+signal=2
+
+[DISK]
+command=df -h / | awk '/\//{ printf(" 💾 %4s/%s \n", $4, $2) }'
+interval=2
+color=#C9E3DB
+
+[NETWORK]
+label=📡
+command=hostname -I | cut -d' ' -f1
+interval=3600
+
+[BANDWIDTH]
+label=📊
+command=~/.config/i3blocks/bandwidth/bandwidth.sh
+interval=300
+color=#FEC925
+signal=2
+
+[CPU]
+label=🔢
+# full_text= CPU:  0.00% @ +00.0°C
+# full_text= 0.00% @ +00.0°C
+command=~/.config/i3blocks/cpu/cpu_info.sh
+# command=~/newcpu.sh
+interval=repeat
+color=#00B4EB
+
+[MEM]
+command=free -h | awk '/Mem:/ { printf(" 🐏 %5s/%s \n", $3, $2) }'
+interval=1
+color=#FEC925
+
+# [SOUND_BURST]
+# command=~/.config/i3blocks/sound/sound_burst.sh
+# interval=once
+#
+# [SOUND]
+# full_text= 🔇:  0%
+# command=~/.config/i3blocks/sound/sound_info.sh
+# interval=0
+# signal=1
+
+[TIME_DATE]
+# command=date +"📅 %A, %B %d %Y, %H:%M:%S %r"
+command=date +"📅 %A, %B %d %Y, %r"
+interval=1
+
+[USER]
+label=👨🏾‍💻
+command=whoami
+interval=1
