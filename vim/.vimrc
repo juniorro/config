@@ -8,6 +8,9 @@ set clipboard=unnamed
 " set linebreak
 " set nolist
 set redrawtime=10000
+" set ttymouse=sgr
+" set mouse=a
+set noshowmode
 set hlsearch
 set incsearch
 set splitright
@@ -58,7 +61,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'morhetz/gruvbox'
+Plug 'ycm-core/YouCompleteMe'
 Plug 'ryanoasis/vim-devicons'
+Plug 'bluz71/vim-nightfly-guicolors'
 call plug#end()
 
 " Mappings
@@ -77,7 +82,7 @@ nmap <silent><leader><leader>- :vertical resize -2 <CR>
 nmap <silent><leader><leader><leader>= :resize +2 <CR>
 nmap <silent><leader><leader><leader>- :resize -2 <CR>
 nmap <silent><leader><leader>d :r! date <CR>
-nmap <silent><leader><leader>x :bd<CR>
+nmap <silent><leader><leader>x :bdelete<CR>
 map <C-L> 5zl
 map <C-H> 2zh
 nmap <silent><leader>w :w <CR>
@@ -106,6 +111,8 @@ nnoremap <leader>o o<ESC>
 nnoremap <leader><leader>o O<ESC>
 nnoremap <silent><leader><leader>t :vertical terminal<CR>
 nnoremap <silent><leader><leader>bs :sh<CR>
+nnoremap <C-l> gt
+nnoremap <C-h> gT
 map <silent><leader><leader>r <C-End>
 nmap <leader><leader>b :vertical ba<CR>
 nmap <silent>gd <Plug>(coc-definition)
@@ -121,6 +128,8 @@ let g:SignatureForceRemoveGlobal2=0
 let NERDTreeMinimalUI=1
 let g:airline#extensions#hunks#enabled=1
 let g:airline#extensions#enabled = 1
+" let NERDTreeMapOpenInTab='<ENTER>'
+" let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
 
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufWinLeave *.* mkview
