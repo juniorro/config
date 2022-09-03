@@ -107,6 +107,7 @@ nnoremap <leader><leader>s <C-w>l
 nnoremap <leader><leader>w <C-w>k
 nnoremap <leader><leader>z <C-w>j
 nnoremap <leader><leader>x <C-w><C-w>
+nnoremap <silent><leader>' ciw""<Esc>P
 nnoremap <leader>o o<ESC>
 nnoremap <leader><leader>o O<ESC>
 nnoremap <silent><leader><leader>t :vertical terminal<CR>
