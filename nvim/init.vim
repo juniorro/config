@@ -42,7 +42,7 @@ set nobackup
 set nowritebackup
 set cmdheight=1
 set updatetime=300
-set signcolumn=yes
+set signcolumn=no
 set shortmess+=c
 set laststatus=2
 " set digraph
@@ -64,7 +64,17 @@ Plug 'kshenoy/vim-signature'
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'dracula/vim',{'as':'dracula'}
+Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
 call plug#end()
+
+" Set color scheme
+
+" colorscheme dracula
+" colorscheme gruvbox
+" colorscheme one
+colorscheme default
 
 " Mappings
 let mapleader = " "
