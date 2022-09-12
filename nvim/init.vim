@@ -136,7 +136,7 @@ let g:airline#extensions#enabled = 1
 " let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
 
 autocmd BufWritePre * :%s/\s\+$//e
-autocmd BufWinLeave *.* mkview
+autocmd BufWinLeave *.* silent! mkview
 autocmd BufWinEnter *.* silent! loadview
 " autocmd BufEnter *.* loadview silent!
 
