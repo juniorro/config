@@ -137,7 +137,8 @@ let g:airline#extensions#enabled = 1
 
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
+autocmd BufWinEnter *.* silent! loadview
+" autocmd BufEnter *.* loadview silent!
 
 colorscheme default
 
