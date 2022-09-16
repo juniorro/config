@@ -129,6 +129,8 @@ nmap <leader><leader>b :vertical ba<CR>
 xnoremap("<leader>p", "\"_dP")
 nnoremap <leader><leader>r :%s///g<Left><Left>
 nnoremap <leader><leader>rc :%s///gc<Left><Left><Left>
+nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
+xnoremap <silent>s* "sy:let @/=@s<CR>cgn
 
 " Other Configs
 "let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore  .git g ""'
