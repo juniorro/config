@@ -11,6 +11,7 @@ set clipboard=unnamed
 " set nolist
 set redrawtime=10000
 " set ttymouse=sgr
+set rnu
 " set mouse=a
 set noshowmode
 set hlsearch
@@ -61,6 +62,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf.vim'
 Plug 'kshenoy/vim-signature'
+Plug 'haya14busa/is.vim'
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'bluz71/vim-nightfly-guicolors'
@@ -79,12 +81,12 @@ colorscheme default
 " Mappings
 let mapleader = " "
 imap jj <Esc>
-nmap <silent><F3> :set rnu! <CR>
-imap <silent><F3> <ESC> :set rnu! <CR>i
+" nmap <silent><F3> :set rnu! <CR>
+" imap <silent><F3> <ESC> :set rnu! <CR>i
 map bf :buffers<CR>
 map bf :buffers<CR>
 map <silent><leader><leader>u :%s/\s\+$//e <CR>
-nmap <silent><leader>hk :vsplit ~/.vim/hotkeys<CR>
+nmap <silent><leader>hk :vsplit ~/.config/nvim/hotkeys.vim<CR>
 nmap <silent><leader>vs :vnew<CR>
 nmap <silent><leader>q :q <CR>
 nmap <silent><leader><leader>= :vertical resize +2 <CR>
@@ -115,15 +117,18 @@ nnoremap <leader><leader>s <C-w>l
 nnoremap <leader><leader>w <C-w>k
 nnoremap <leader><leader>z <C-w>j
 nnoremap <leader><leader>x <C-w><C-w>
-nnoremap <silent><leader>' ciw""<Esc>P
+nnoremap <silent><leader">'" ciw""<Esc>P
 nnoremap <leader>o o<ESC>
 nnoremap <leader><leader>o O<ESC>
 nnoremap <silent><leader><leader>t :vertical terminal<CR>
 nnoremap <silent><leader><leader>bs :sh<CR>
 nnoremap <C-l> gt
 nnoremap <C-h> gT
-map <silent><leader><leader>r <C-End>
+map <silent><leader><leader>b <C-End>
 nmap <leader><leader>b :vertical ba<CR>
+xnoremap("<leader>p", "\"_dP")
+nnoremap <leader><leader>r :%s///g<Left><Left>
+nnoremap <leader><leader>rc :%s///gc<Left><Left><Left>
 
 " Other Configs
 "let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore  .git g ""'
