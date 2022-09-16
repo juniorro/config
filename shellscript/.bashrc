@@ -113,6 +113,8 @@ alias commit='git status && git add . && git status && git commit'
 alias push='git push origin master'
 alias vf='vifm'
 alias vim='nvim'
+alias vi='nvim'
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -139,6 +141,9 @@ if ! shopt -oq posix; then
 fi
 
 # echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode
+# echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode
+
+# set -o vi
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
