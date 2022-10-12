@@ -5,7 +5,7 @@ filetype indent on
 set nocompatible
 set clipboard=unnamed
 " set spell
-" set spelllang=en_us
+set spelllang=en_us
 " set wrap
 " set linebreak
 " set nolist
@@ -81,8 +81,10 @@ colorscheme default
 " Mappings
 let mapleader = " "
 imap jj <Esc>
-" nmap <silent><F3> :set rnu! <CR>
-" imap <silent><F3> <ESC> :set rnu! <CR>i
+nmap <silent><F1> :set rnu! <CR>
+imap <silent><F1> <ESC> :set rnu! <CR>i
+nmap <silent><F2> :set spell! <CR>
+imap <silent><F2> <ESC> :set spell! <CR>i
 map bf :buffers<CR>
 map bf :buffers<CR>
 map <silent><leader><leader>u :%s/\s\+$//e <CR>
