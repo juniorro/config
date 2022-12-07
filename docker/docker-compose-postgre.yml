@@ -1,0 +1,39 @@
+services:
+  postgresdb:
+    container_name: postgrecontainer
+    image: postgres
+    # restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: testdatabase
+      POSTGRES_PASSWORD: letmein
+      SERVICE_TAGS: dev1
+      SERVICE_NAME: postgresservice
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    volumes:
+      - postvolume:/var/lib/postgresql/data
+      # - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
+  pgadmin:
+    container_name: pgadmincontainer
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: juniorro98@outlook.com
+      PGADMIN_DEFAULT_PASSWORD: letmein
+      PGADMIN_DEFAULT_ADDRESS: 6000
+      PGADMIN_LISTEN_PORT: 6000
+    expose:
+      - 6000
+    ports:
+      - 8000:6000
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+volumes:
+  postvolume:
+  pgadmin:
+# psql -h 192.168.1.216 -p 5432 -d userservice -U postgres -W
