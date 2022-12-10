@@ -16,15 +16,11 @@ if not typescript_setup then
 	return
 end
 
-local cmd = {
-	"-javaagent:" .. tostring(vim.fn.getenv("LOMBOK_JAR")),
-}
-
 -- import jdtls plugin safely
-local jdtls = pcall(require, "jdtls")
-if not jdtls then
-	return
-end
+-- local jdtls = pcall(require, "jdtls")
+-- if not jdtls then
+-- 	return
+-- end
 
 local keymap = vim.keymap -- for conciseness
 
@@ -73,10 +69,11 @@ lspconfig["html"].setup({
 })
 
 -- configure html server
-lspconfig["jdtls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+-- lspconfig["jdtls"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- 	filetypes = { "java" },
+-- })
 
 -- configure typescript server with plugin
 typescript.setup({
@@ -102,7 +99,7 @@ lspconfig["tailwindcss"].setup({
 lspconfig["emmet_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	filetypes = { "java", "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+	filetypes = { "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
 })
 
 -- configure lua server (with special settings)
