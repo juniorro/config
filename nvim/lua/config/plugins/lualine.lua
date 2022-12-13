@@ -33,5 +33,6 @@ lualine.setup({
 	options = {
 		theme = lualine_nightfly,
 		-- theme = "lualine.themes.dracula",
+		disabled_filetypes = { "packer", "NvimTree" },
 	},
 })
