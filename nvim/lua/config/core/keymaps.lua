@@ -23,6 +23,8 @@ keymap.set("n", "<leader><leader><leader>-", ":resize -2<CR>", options)
 keymap.set("n", "<leader><leader>t", ":vertical terminal<CR>", options)
 keymap.set("n", "<leader><leader>h", ":terminal<CR>", options)
 keymap.set("n", "<ESC>", ":nohl<CR>")
+keymap.set("n", "<leader>k", "7zl", options)
+keymap.set("n", "<leader>j", "7zh", options)
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", options)
