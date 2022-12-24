@@ -55,7 +55,8 @@ keymap.set("n", "<leader>tp", ":tabp<CR>", options) --  go to previous tab
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", options) -- toggle split window maximizatio, optionsn
 
 -- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", options) -- toggle file explore, optionsr
+-- keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", options) -- toggle file explore, optionsr
+keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", options) -- toggle file explore, optionsr
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", options) -- find files within current working directory, respects .gitignor, optionse
