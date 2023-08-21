@@ -37,3 +37,4 @@ volumes:
   postgresvolume:
   pgadminvolume:
 # psql -h 192.168.1.216 -p 5432 -d userservice -U postgres -W
+# docker exec -it <container_name or id> psql -U <user> -d <database name> name
