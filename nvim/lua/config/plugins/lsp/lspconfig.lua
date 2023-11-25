@@ -37,7 +37,7 @@ local config = {
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
 		"-Dlog.protocol=true",
 		"-Dlog.level=ALL",
-		"-javaagent:" .. home .. "/.local/share/nvim/lsp_servers/jdtls/lombok.jar",
+		"-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
 		"-Xms1g",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",
@@ -47,9 +47,9 @@ local config = {
 
 		-- 💀
 		"-jar",
-		vim.fn.glob(home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+		vim.fn.glob(home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
 		"-configuration",
-		home .. "/.local/share/nvim/lsp_servers/jdtls/config_linux",
+		home .. "/.local/share/nvim/mason/packages/jdtls/config_mac",
 		"-data",
 		workspace_dir,
 	},
@@ -80,7 +80,11 @@ local config = {
 			},
 			-- Set this to true to use jdtls as your formatter
 			format = {
-				enabled = false,
+				enabled = true,
+				settins = {
+					url = "./lang-servers/intellij-java-google-style.xml",
+					profile = "GoogleStyle",
+				},
 			},
 		},
 		signatureHelp = { enabled = true },
@@ -93,6 +97,12 @@ local config = {
 				"java.util.Objects.requireNonNull",
 				"java.util.Objects.requireNonNullElse",
 				"org.mockito.Mockito.*",
+			},
+			importOrder = {
+				"java",
+				"javax",
+				"com",
+				"org",
 			},
 		},
 		contentProvider = { preferred = "fernflower" },
@@ -232,7 +242,7 @@ lspconfig["emmet_ls"].setup({
 })
 
 -- configure lua server (with special settings)
-lspconfig["sumneko_lua"].setup({
+lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = { -- custom settings for lua

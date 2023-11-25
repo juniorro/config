@@ -3,7 +3,16 @@ local opt = vim.opt -- for conciseness
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
-opt.scrolloff = 3 -- shows absolute line number on cursor line (when relative number is on)
+opt.scrolloff = 1
+opt.textwidth = 100
+-- opt.noro = false
+-- opt.shortmess = vim.opt.shortmess
+-- + {
+-- c = true, -- Do not show completion messages in command line
+-- F = true, -- Do not show file info when editing a file, in the command line
+-- W = true, -- Do not show "written" in command line when writing
+-- I = true, -- Do not show intro message when starting Vim
+-- 	}
 
 -- tabs & indentation
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
