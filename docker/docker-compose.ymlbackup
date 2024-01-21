@@ -1,0 +1,43 @@
+services:
+  mysqldb:
+    container_name: mysqlcontainerforapp
+    image: mysql:8.0
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - $HOME/database:/var/lib/mysql
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    environment:
+      MYSQL_DATABASE: userservice
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: letmein
+      MYSQL_ROOT_PASSWORD: letmein
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysqldb
+    networks:
+      - internalnet
+
+  apiapplication:
+    container_name: apiapplicationcontainer
+    build: .
+    image: apiapplication:v1
+    restart: unless-stopped
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/userservice
+      SPRING_DATASOURCE_USERNAME: 'admin'
+      SPRING_DATASOURCE_PASSWORD: 'letmein'
+    expose:
+      - 8085
+    ports:
+      - 8085:8085
+    depends_on:
+      - mysqldb
+    networks:
+      - internalnet
+
+networks:
+  internalnet:
+    driver: bridge
